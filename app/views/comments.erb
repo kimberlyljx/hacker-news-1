@@ -1,0 +1,8 @@
+<div class="container">
+<h3><%= @post.title %></h3> <br>  
+   <p><% @comments.each do |p| %>
+   	Comment: <%= p.body %> <br>
+    by <a href= "/users/<%= p.user.id %>" ><%= p.user.username %></a><br>
+    <%= CommentVote.where(comment_id: p.id).count %> vote(s) for comment<br>
+    <% end %>
+  </p> 

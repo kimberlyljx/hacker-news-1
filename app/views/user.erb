@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Profile Page of <%= @user.username %></h2><br><br>
+
+  <h3>User's submissions</h3>  
+   <p><% @user.posts.each do |p| %>
+    <a href= "<%= p.link %>" ><%= p.title %></a><br>
+    <%= PostVote.where(post_id: p.id).count %> point(s) | post by <a href= "/users/<%= p.user.id %>" ><%= p.user.username %></a> | <a href= "/posts/<%= p.id %>/comments" ><%= p.comments.count %> comment(s)</a><br><br>
+    <% end %>
+  </p> 
+  <br>
+
+  <h3>User's comments</h3>  
+   <p><% @user.comments.each do |p| %>
+    <p>
+    Post title: <a href= "<%= p.post.link %>" ><%= p.post.title %></a><br>
+    <%= CommentVote.where(comment_id: p.id).count %> vote(s) for comment<br>
+    Comment: <%= p.body %><br>
+    <% end %>
+  </p>
+  </p> 
+
+
+  
+
+</div>

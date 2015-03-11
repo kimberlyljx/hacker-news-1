@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Hacker News</h1>
+  <p><% @posts.each do |p| %>
+    <a href= "<%= p.link %>" ><%= p.title %></a><br>
+    <%= PostVote.where(post_id: p.id).count %> point(s) | post by <a href= "/users/<%= p.user.id %>" ><%= p.user.username %></a> | <a href= "/posts/<%= p.id %>/comments" ><%= p.comments.count %> comment(s)</a><br><br>
+    <% end %>
+  </p> 
+</div>
